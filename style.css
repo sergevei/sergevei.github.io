@@ -14,10 +14,16 @@ body {
   height: 100%;
   font-variant: petite-caps;
   font-size: 30px;
-  color: #5c6dab;
+  color: #fff;
   min-height: 100vh;
+  background: #22263c;
 }
 
 .center-text {
     text-align: center;
+}
+
+img {
+    max-width: 300px;
+    height: auto;
 }
