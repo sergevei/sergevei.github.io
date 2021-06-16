@@ -17,3 +17,7 @@ body {
   color: #5c6dab;
   min-height: 100vh;
 }
+
+.center-text {
+    text-align: center;
+}
