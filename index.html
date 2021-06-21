@@ -10,26 +10,46 @@
         integrity="sha512-Aa+z1qgIG+Hv4H2W3EMl3btnnwTQRA47ZiSecYSkWavHUkBF2aPOIIvlvjLCsjapW1IfsGrEO3FU693ReouVTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="buttons.css">
     <title>Simple portfolio</title>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 center-text">
-                <img src="png.png">
-            </div>
-            <div class="col-md-4 col-sm-12 center-text">
-                <span>1</span>
-            </div>
-            <div class="col-md-4 col-sm-12 center-text">
-                <span>Init project</span>
-            </div>
-            <div class="col-md-4 col-sm-12 center-text">
-                <span>2</span>
-            </div>
+            <section class="navigaton_wrapper col-sm-12 col-md-3 border center-text">
+                <div class="avatar">
+                    <img src="png.png">
+                </div>
+                <nav class="menu">
+                    <ul>
+                        <li><button class="btn-1" onclick="handlePage('about-me_wrapper')" type="button"><a
+                                    id="about-me_wrapper_a"><span>about
+                                        me</span></a></button></li>
+                        <li><button class="btn-1" onclick="handlePage('technologies_wrapper')" type="button"><a
+                                    id="technologies_wrapper_a"><span>technologies</span></a></button>
+                        </li>
+                        <li><button class="btn-1" onclick="handlePage('skills_wrapper')" type="button"><a
+                                    id="skills_wrapper_a"><span>skills</span></a></button></li>
+                        <li><button class="btn-1" onclick="handlePage('projects_wrapper')" type="button"><a
+                                    id="projects_wrapper_a"><span>projects</span></a></button></li>
+                    </ul>
+                </nav>
+            </section>
+            <main class="portfolio_wrapper col-sm-12 col-md-7 border center-text">
+                <div id="about-me_wrapper" class="page">about me</div>
+                <div id="technologies_wrapper" class="page">technologies</div>
+                <div id="skills_wrapper" class="page">skills</div>
+                <div id="projects_wrapper" class="page">projects</div>
+            </main>
+            <section class="social-links_wrapper col-sm-12 col-md-2 border center-text">
+                social links
+            </section>
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src=portfolio.js></script>
 
 </html>
