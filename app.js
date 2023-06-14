@@ -44,6 +44,11 @@ function atvImg() {
       layer.className = "atvImg-rendered-layer";
       layer.setAttribute("data-layer", i);
       layer.style.backgroundImage = "url(" + imgSrc + ")";
+
+      if (i === 1) {
+        layer.style.backgroundSize = "90%";
+      }
+
       layersHTML.appendChild(layer);
 
       layers.push(layer);
