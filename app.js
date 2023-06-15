@@ -180,11 +180,9 @@ const initDirectPerson = () => {
 
   for (let i = 0; i < 11; i++) {
     directPerson += `${directPerson} | ${person}`;
-    console.log(directPerson);
   }
 
   document.getElementById("direct-invite").innerText = directPerson;
-  console.log(directPerson);
 };
 
 initDirectPerson();
