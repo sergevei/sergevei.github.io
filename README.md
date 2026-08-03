@@ -49,14 +49,4 @@ Full details (project descriptions, responsibilities, and tools per role) live i
 
 ## Contact
 
-- GitHub: [github.com/sergevei](https://github.com/sergevei)
 - LinkedIn: [linkedin.com/in/siarhei-vei](https://www.linkedin.com/in/siarhei-vei-310b24229)
-
-## Project structure
-
-- `original.html` — readable source (unminified). Edit this file.
-- `index.html` — minified production build served by GitHub Pages. Regenerate it from `original.html` after edits (e.g. with `html-minifier-terser`) rather than editing it directly.
-
-## Running locally
-
-This is a single static HTML file with no dependencies to install — just open `index.html` (or `original.html` while developing) directly in a browser, or serve the folder with any static file server.
