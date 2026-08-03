@@ -33,11 +33,11 @@ Senior frontend engineer with 8+ years designing, leading, and building JavaScri
 | AI Legal Assistant | Senior Software Developer | 05/2021 – 01/2022 |
 | Ponnrest | Senior Software Developer | 01/2021 – 05/2021 |
 | Gratis | Senior Software Developer | 05/2019 – 01/2021 |
-| Westland | Senior Software Developer | 03/2018 – 05/2019 |
-| Interactive Maps | Senior Software Developer | 11/2017 – 03/2018 |
-| PocPortal | Senior Software Developer | 06/2017 – 11/2017 |
-| GlHealthCare | Senior Software Developer | 10/2016 – 06/2017 |
-| TCourses | Senior Software Developer | 01/2016 – 09/2016 |
+| Westland | Middle Frontend Developer | 03/2018 – 05/2019 |
+| Interactive Maps | Middle Frontend Developer | 11/2017 – 03/2018 |
+| PocPortal | Middle Frontend Developer | 06/2017 – 11/2017 |
+| GlHealthCare | Junior Frontend Developer | 10/2016 – 06/2017 |
+| TCourses | Junior Frontend Developer | 01/2016 – 09/2016 |
 
 Full details (project descriptions, responsibilities, and tools per role) live in the site's Experience panel.
 
