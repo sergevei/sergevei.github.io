@@ -13,15 +13,37 @@ Senior frontend engineer with 8+ years designing, leading, and building JavaScri
 - Languages: English (Upper-Intermediate)
 - Education: B.A.Sc. in Applied Information Technology Software — BSTU
 
+**Core Competencies**
+
+- Solid experience in designing, leading and implementing technology projects
+- Expert in JavaScript frameworks and libraries such as React, Angular, Node.js and Knockout
+- Ability to participate in individual or team development processes
+- Advanced knowledge in OOP concept, design patterns
+- Experience in working with Kanban boards and Scrum environment
+- Strong debugging, analytical, and problem-solving abilities
+- Staying aware of upcoming languages and frameworks
+- Ability to learn new frameworks and technologies quickly and independently
+
 ## Skills
 
-**Languages & frameworks:** JavaScript, TypeScript, React, Vue, Node.js, Next.js, Nest.js, Angular, KnockoutJS, Express.js, React Native, jQuery, AJAX
+### Tech Skills
 
-**Styling & state:** HTML5, CSS3, Redux Toolkit, Redux-Saga, Redux-Thunk, MobX, Material-UI, Bootstrap, Reactstrap, SASS/SCSS, BEM
+**Databases:** MySQL, MongoDB, PostgreSQL, Oracle
 
-**Data & tools:** MySQL, MongoDB, PostgreSQL, Oracle, Oracle Commerce Cloud, Git/GitHub/GitLab, Bitbucket, Docker, Kubernetes, Figma, Adobe XD, Jira, Postman, Webpack
+**Programming Languages:** JavaScript, TypeScript, PHP (basic)
 
-**Platforms & integrations:** Google Tag Manager, Webflow, Twilio, Payment APIs, REST APIs, Chart.js, Endeca, AI Integration
+**Programming Technologies & Frameworks:** React, Node.js, Angular, KnockoutJS, Express.js, React-Native, Reactstrap, Bootstrap, jQuery, HTML5, CSS3, SASS/LESS, SCSS, Material-UI, React Material UI, Redux, Redux-Thunk, Redux-Saga, Redux Toolkit, Redux-Form, Oracle OSF, Oracle Commerce Cloud, Chart.js, Passport.js, Postman, BEM Methodology, REST/RESTful API, REST, Webpack, Figma, Adobe XD, Next.js, Nest.js
+
+**Other:** GIT, GitHub, GitLab, Bitbucket, Docker, Kubernetes, Atlassian, JIRA, Trello, Asana
+
+### Soft Skills
+
+- Strong debugging, analytical, and problem-solving abilities
+- Strong analytical skills to understand complex business processes and develop optimal solutions
+- Attention to detail, ensuring high-quality code and system reliability
+- Effective communication and collaboration with teams, clients, and technical specialists to align on solutions
+- Quick adaptability to new technologies and evolving project requirements
+- Problem-solving mindset with the ability to research, analyze documentation, and work independently
 
 ## Experience
 
