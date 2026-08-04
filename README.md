@@ -10,7 +10,7 @@ Senior frontend engineer with 8+ years designing, leading, and building JavaScri
 - Agile · Scrum · Kanban
 - OOP & design patterns
 - Team & solo delivery
-- Languages: English (Upper-Intermediate), Russian (Native)
+- Languages: English (Upper-Intermediate)
 - Education: B.A.Sc. in Applied Information Technology Software — BSTU
 
 ## Skills
