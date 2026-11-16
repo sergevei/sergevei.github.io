@@ -21,7 +21,7 @@ JavaScript/HTML5/CSS3, TypeScript, React, Vue, Node.js, Nest.js, Next.js, Cloudf
 | | |
 |---|---|
 | **Programming languages** | JavaScript, TypeScript, PHP (basic) |
-| **Backend & Cloud** | Node.js, Express.js, Nest.js, REST/RESTful API, Cloudflare Workers, Workers KV, OAuth 2.0, Passport.js |
+| **Backend & Cloud** | Node.js, Express.js, Nest.js, REST/RESTful API, Cloudflare Workers, Workers KV, Cron Triggers, OAuth 2.0, Telegram Bot API, Webhooks, Passport.js |
 | **Web technologies and Frameworks** | React, Angular, KnockoutJS, React-Native, Reactstrap, Bootstrap, jQuery, HTML5, CSS3, SASS/LESS, SCSS, Material-UI, React Material UI, Redux, Redux-Thunk, Redux-Saga, Redux Toolkit, Redux-Form, Oracle OSF, Oracle Commerce Cloud, Chart.js, Postman, BEM Methodology, REST, Webpack, Figma, Adobe XD, Next.js |
 | **Databases** | MySQL, MongoDB, PostgreSQL, Oracle |
 | **Project / Task Management Tools** | Atlassian, JIRA, Trello, Asana |
@@ -263,7 +263,7 @@ English - Upper-Intermediate
 
 OBYN - a family of free web apps designed and built fullstack, end to end: offline-first React PWAs on the frontend and a serverless backend on Cloudflare Workers. User data stays in the user's own Google Drive: no sign-up and no ads.
 
-**Backend:** Edge API on Cloudflare Workers - OAuth 2.0 code exchange and token refresh with the client secret kept on the server (long-lived Google Drive sign-in). Endpoints check the origin, validate input and store no user data.
+**Backend:** Edge API on Cloudflare Workers - OAuth 2.0 code exchange and token refresh with the client secret kept on the server (long-lived Google Drive sign-in), plus a Telegram reminder bot for OBYN. Endpoints check the origin and validate input; the server keeps no user records except the opt-in data the reminder bot needs.
 
 ### OBYN
 Expense tracker in BYN · Personal project · [obyn.by](https://obyn.by/)
@@ -274,8 +274,16 @@ Expense tracker in BYN · Personal project · [obyn.by](https://obyn.by/)
 - Spending charts by category and period, budget tracking and period comparison
 - Currency conversion synced with the National Bank exchange-rate API
 - Cross-device sync through the user's own Google Drive, backups to JSON and CSV; installable PWA with full offline mode
+- Telegram reminder bot @OBYNBot: a daily digest about upcoming and overdue bills and days without receipts at the hour the user picks, and a “Nearest bills” button with the three closest payments
 
-**Stack:** React 18, TypeScript, Vite, Redux Toolkit, React Router, PWA (Workbox), IndexedDB / localStorage, Google Drive API (OAuth 2.0), Chart.js, NBRB Exchange Rates API, Cloudflare Workers, Wrangler
+**Telegram bot:**
+- Bot backend on Cloudflare Workers: a Telegram webhook verified with a secret-token header, an hourly Cron Trigger and storage in Workers KV
+- Reminders at each user's local hour: the app sends the device time zone, the worker computes the local time and date with Intl, daylight saving included; at most one digest a day
+- Privacy by design: one-tap linking through a t.me deep link with a random 256-bit key that the server keeps only as a SHA-256 hash; bill names and amounts are left out when the user's data is encrypted; /stop or “Turn off” in the app deletes everything
+- KV metadata holds the hour and time zone, so the cron reads only the records that are due; users who blocked the bot are removed automatically
+- Covered by Vitest tests against a mocked Telegram API and Workers KV
+
+**Stack:** React 18, TypeScript, Vite, Redux Toolkit, React Router, PWA (Workbox), IndexedDB / localStorage, Google Drive API (OAuth 2.0), Chart.js, NBRB Exchange Rates API, Cloudflare Workers, Telegram Bot API (webhooks), Cron Triggers, Workers KV, Wrangler
 
 ### OBYNTasker
 Task planner by periods · Personal project · [tasker.obyn.by](https://tasker.obyn.by/)
@@ -339,5 +347,6 @@ What to watch · Personal project · [watch.obyn.by](https://watch.obyn.by/)
 
 - **GitHub:** [github.com/sergevei](https://github.com/sergevei)
 - **LinkedIn:** [linkedin.com/in/siarhei-vei](https://www.linkedin.com/in/siarhei-vei-310b24229)
+- **Telegram:** [t.me/vsergeserge](https://t.me/vsergeserge)
 - **Portfolio:** [sergevei.github.io](https://sergevei.github.io/)
 - **Hobbies:** Playing volleyball, Cycling, Swimming
