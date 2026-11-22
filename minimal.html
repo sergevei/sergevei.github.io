@@ -90,14 +90,44 @@ a{color:inherit}
 
 .menu-btn{display:none}
 @media (max-width:900px){
-  .nav{position:fixed;left:0;right:0;top:64px;flex-direction:column;gap:0;margin:0;padding:8px var(--gutter) 18px;background:var(--bg);border-bottom:1px solid var(--line);transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .2s,transform .25s,visibility 0s linear .25s}
-  .nav.open{opacity:1;transform:none;visibility:visible;transition-delay:0s}
-  .nav a{font-size:17px;padding:13px 4px;border-radius:0;border-bottom:1px solid var(--line)}
-  .nav a:last-child{border-bottom:0}
-  .nav a:hover{background:none}
+  .nav{display:none}
   .tools{margin-left:auto;padding-left:0;border-left:0}
   .menu-btn{display:grid}
 }
+/* Hamburger that morphs into a cross */
+.burger{position:relative;width:18px;height:10px}
+.burger i{position:absolute;left:0;right:0;height:1.6px;border-radius:2px;background:currentColor;transition:top .25s cubic-bezier(.7,0,.2,1) .2s,transform .3s cubic-bezier(.7,0,.2,1)}
+.burger i:first-child{top:0}.burger i:last-child{top:8.4px}
+[aria-expanded="true"] .burger i{top:4.2px;transition:top .25s cubic-bezier(.7,0,.2,1),transform .3s cubic-bezier(.7,0,.2,1) .2s}
+[aria-expanded="true"] .burger i:first-child{transform:rotate(45deg)}
+[aria-expanded="true"] .burger i:last-child{transform:rotate(-45deg)}
+[aria-expanded="true"].menu-btn{color:var(--ink)}
+
+/* Full-screen mobile menu: opens as a circle growing from the button */
+.mnav{position:fixed;inset:0;z-index:35;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:104px var(--gutter) calc(28px + env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;
+  background:radial-gradient(90% 60% at 100% 100%,var(--accent-soft),transparent 70%),var(--bg);
+  clip-path:circle(0 at var(--x,calc(100% - 32px)) var(--y,32px));visibility:hidden;transition:clip-path .65s cubic-bezier(.7,0,.2,1),visibility 0s linear .65s}
+.mnav.open{clip-path:circle(150vmax at var(--x,calc(100% - 32px)) var(--y,32px));visibility:visible;transition:clip-path .8s cubic-bezier(.7,0,.2,1),visibility 0s}
+.mnav-list{display:flex;flex-direction:column}
+.mnav-list a{display:flex;align-items:flex-start;gap:16px;padding:7px 0;text-decoration:none;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.mnav-n{font:500 12px/1 var(--mono);color:var(--muted);padding-top:.9em;width:22px;opacity:0;transition:opacity .4s ease}
+.mnav-t{display:inline-block;overflow:hidden;padding-bottom:.08em;font:500 clamp(40px,11.5vw,60px)/1.05 var(--display);letter-spacing:-.045em}
+.mnav-t>span{display:inline-block;transform:translateY(110%);transition:transform .45s cubic-bezier(.7,0,.2,1),color .25s}
+.mnav.open .mnav-n{opacity:1;transition-delay:calc(var(--i) * 60ms + 380ms)}
+.mnav.open .mnav-t>span{transform:none;transition:transform .9s cubic-bezier(.2,.8,.2,1) calc(var(--i) * 60ms + 260ms),color .25s}
+.mnav-list a.active .mnav-t>span,.mnav-list a.active .mnav-n{color:var(--accent)}
+.mnav-list a:active .mnav-t>span{color:var(--muted)}
+.mnav-foot{display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease}
+.mnav.open .mnav-foot{opacity:1;transform:none;transition:opacity .6s ease .7s,transform .8s cubic-bezier(.2,.8,.2,1) .7s}
+.mnav-label{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mnav-social{display:flex;flex-wrap:wrap;gap:8px}
+.mnav-social a{display:inline-flex;align-items:center;gap:6px;padding:11px 15px;border:1px solid var(--line-2);border-radius:100px;font-size:14.5px;font-weight:500;text-decoration:none;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.mnav-social a svg{width:13px;height:13px;color:var(--muted)}
+.mnav-3d{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-2);text-decoration:none}
+.mnav-3d b{font:500 12px/1 var(--mono);color:var(--muted);white-space:nowrap}
+body.menu-open{overflow:hidden}
+body.menu-open .top{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent}
+@media (min-width:901px){.mnav{display:none}}
 
 /* Sections */
 section{padding:clamp(64px,10vw,120px) 0;border-top:1px solid var(--line)}
@@ -279,12 +309,31 @@ footer a:hover{color:var(--ink)}
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
-      </button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-controls="mnav" aria-expanded="false"><span class="burger" aria-hidden="true"><i></i><i></i></span></button>
     </div>
   </div>
 </header>
+
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" inert>
+  <nav class="mnav-list" aria-label="Sections">
+    <a href="#about" style="--i:0"><span class="mnav-n">01</span><span class="mnav-t"><span>About</span></span></a>
+    <a href="#experience" style="--i:1"><span class="mnav-n">02</span><span class="mnav-t"><span>Experience</span></span></a>
+    <a href="#projects" style="--i:2"><span class="mnav-n">03</span><span class="mnav-t"><span>Projects</span></span></a>
+    <a href="#skills" style="--i:3"><span class="mnav-n">04</span><span class="mnav-t"><span>Skills</span></span></a>
+    <a href="#certificates" style="--i:4"><span class="mnav-n">05</span><span class="mnav-t"><span>Certificates</span></span></a>
+    <a href="#contact" style="--i:5"><span class="mnav-n">06</span><span class="mnav-t"><span>Contact</span></span></a>
+  </nav>
+  <div class="mnav-foot">
+    <span class="mnav-label">Get in touch</span>
+    <div class="mnav-social">
+      <a href="https://t.me/vsergeserge" target="_blank" rel="noopener">Telegram<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+      <a href="https://www.linkedin.com/in/siarhei-vei-310b24229" target="_blank" rel="noopener">LinkedIn<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+      <a href="https://github.com/sergevei" target="_blank" rel="noopener">GitHub<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+      <a href="cv/Siarhei_Vei_CV.pdf" target="_blank" rel="noopener">CV · PDF<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+    </div>
+    <a class="mnav-3d" href="index.html?view=3d" data-view="3d">Explore the interactive 3D version <b>3D →</b></a>
+  </div>
+</div>
 
 <main id="main">
 
@@ -844,13 +893,33 @@ document.getElementById("theme").addEventListener("click",function(){
   root.dataset.theme=next;try{localStorage.setItem("theme",next)}catch(e){}
 });
 
-// Mobile menu
+// Mobile menu: full screen, grows from the button
 (function(){
-  var btn=document.getElementById("menu-btn"),nav=document.getElementById("nav");
-  function set(open){nav.classList.toggle("open",open);btn.setAttribute("aria-expanded",String(open));btn.setAttribute("aria-label",open?"Close menu":"Open menu")}
-  btn.addEventListener("click",function(){set(!nav.classList.contains("open"))});
-  nav.addEventListener("click",function(e){if(e.target.closest("a"))set(false)});
-  document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
+  var btn=document.getElementById("menu-btn"),menu=document.getElementById("mnav"),
+      outside=[document.getElementById("main"),document.querySelector("footer")];
+  function isOpen(){return menu.classList.contains("open")}
+  function set(open,refocus,kb){
+    if(open===isOpen())return;
+    var r=btn.getBoundingClientRect();
+    menu.style.setProperty("--x",(r.left+r.width/2)+"px");menu.style.setProperty("--y",(r.top+r.height/2)+"px");
+    menu.classList.toggle("open",open);menu.inert=!open;
+    outside.forEach(function(el){el.inert=open});
+    document.body.classList.toggle("menu-open",open);
+    btn.setAttribute("aria-expanded",String(open));btn.setAttribute("aria-label",open?"Close menu":"Open menu");
+    if(open&&kb)setTimeout(function(){var a=menu.querySelector(".mnav-list a");a&&a.focus({preventScroll:true})},350);
+    else if(refocus)btn.focus({preventScroll:true});
+  }
+  btn.addEventListener("click",function(e){set(!isOpen(),false,e.detail===0)});
+  menu.querySelectorAll(".mnav-list a").forEach(function(a){
+    a.addEventListener("click",function(e){
+      var t=document.querySelector(a.hash);if(!t)return;
+      e.preventDefault();set(false);
+      requestAnimationFrame(function(){t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});history.replaceState(null,"",a.hash)});
+    });
+  });
+  menu.querySelectorAll(".mnav-foot a").forEach(function(a){a.addEventListener("click",function(){set(false)})});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&isOpen())set(false,true)});
+  matchMedia("(min-width: 901px)").addEventListener("change",function(m){if(m.matches)set(false)});
 })();
 
 // Header border once scrolled
@@ -863,9 +932,9 @@ document.getElementById("theme").addEventListener("click",function(){
 // Scroll spy
 (function(){
   if(!("IntersectionObserver" in window))return;
-  var links={};document.querySelectorAll(".nav a").forEach(function(a){links[a.hash.slice(1)]=a});
+  var links=[].slice.call(document.querySelectorAll(".nav a,.mnav-list a"));
   var spy=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting){for(var k in links)links[k].classList.toggle("active",k===en.target.id)}});
+    entries.forEach(function(en){if(en.isIntersecting)links.forEach(function(a){a.classList.toggle("active",a.hash==="#"+en.target.id)})});
   },{rootMargin:"-45% 0px -50% 0px"});
   document.querySelectorAll("main section[id]").forEach(function(s){spy.observe(s)});
 })();
